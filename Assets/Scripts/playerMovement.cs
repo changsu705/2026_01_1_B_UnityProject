@@ -17,7 +17,7 @@ public class playerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class playerMovement : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         //속도 값으로 직접 이동
-        rb.velocity = new Vector3(moveHorizontal * speed,rb.velocity.y, moveVertical * speed);
+        rb.velocity = new Vector3(moveHorizontal * speed, rb.velocity.y, moveVertical * speed);
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -37,7 +37,7 @@ public class playerMovement : MonoBehaviour
         }
     }
 
-private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Coin"))
         {
@@ -46,6 +46,13 @@ private void OnTriggerEnter(Collider other)
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
 
-
+    }
 }
+
