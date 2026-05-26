@@ -100,7 +100,7 @@ public class RankGameManager : MonoBehaviour
 
     public bool SpawnNewRank()
     {
-         GridCell emptyCell = FineEmptyCell();
+        GridCell emptyCell = FineEmptyCell();
         if (emptyCell == null) return false;
         int rankLevel = Random.Range(0, 100) < 90 ? 1 : 2;
         CreateRankInCell(emptyCell, rankLevel);
